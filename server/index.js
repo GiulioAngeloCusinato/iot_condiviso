@@ -24,34 +24,30 @@ const mqtt = require('mqtt')
 
 const host = 'test.mosquitto.org';
 const port = '1883';
-const clientId = "b9c88b0362d34c2aaf9782ad48e7b6d1";//`mqtt_${Math.random().toString(16).slice(3)}`
+const clientId ="311a0f14e21b4bccbe76886bd6d00406";//`mqtt_${Math.random().toString(16).slice(3)}`
 
-const connectUrl = `mqtt://${host}:${port}`
-const client = mqtt.connect(connectUrl, {
-  clientId,
-  clean: true,
-  connectTimeout: 30,
-  username: '',
-  password: '',
-  reconnectPeriod: 1000,
-})
+const connectUrl = `mqtt://${host}`
+const client = mqtt.connect(connectUrl);
 
-const topic = 'iot2021/GiulioAngeloCusinato'
+const topic = 'iot2021/+/generico'
+
+
 client.on('connect', () => {
-  console.log('Connected')
+  console.log('Connected');
   client.subscribe([topic], () => {
-    console.log(`Subscribe to topic '${topic}'`)
+    console.log(`Subscribe to topic '${topic}'`);
+    })
 })
 
+client.on('message', (topic, payload) => {
+    console.log('Received Message:', topic, payload.toString())
+    logModel.create(JSON.parse(payload.toString()));
+})
 
+/*
 client.publish(topic, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
     if (error) {
       console.error(error)
     }
   })
-})
-
-client.on('message', (topic, payload) => {
-    console.log('Received Message:', topic, payload.toString())
-    logModel.create(payload);
-})
+*/

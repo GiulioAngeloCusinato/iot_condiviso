@@ -16,7 +16,9 @@ namespace Client
             sensors.Add(new VirtualPositionSensor());
 
             // define protocol
-            ProtocolInterface protocol = new Http("http://localhost:8011/drone/123");
+            //ProtocolInterface protocol = new Http("http://localhost:8011/drone/123");
+
+            ProtocolInterface protocol = new Mqtt("test.mosquitto.org");
 
             while (true)
             {
@@ -74,3 +76,5 @@ namespace Client
     }
 
 }
+
+

@@ -39,8 +39,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MQTTnet, Version=3.0.13.0, Culture=neutral, PublicKeyToken=b69712f52770c0a7, processorArchitecture=MSIL">
-      <HintPath>packages\MQTTnet.3.0.13\lib\net461\MQTTnet.dll</HintPath>
+    <Reference Include="MQTTnet, Version=3.1.1.0, Culture=neutral, PublicKeyToken=b69712f52770c0a7, processorArchitecture=MSIL">
+      <HintPath>packages\MQTTnet.3.1.1\lib\net461\MQTTnet.dll</HintPath>
     </Reference>
     <Reference Include="RabbitMQ.Client, Version=6.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <HintPath>packages\RabbitMQ.Client.6.2.1\lib\net461\RabbitMQ.Client.dll</HintPath>
@@ -107,6 +107,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocols\Http.cs" />
+    <Compile Include="Protocols\Mqtt.cs" />
     <Compile Include="Protocols\ProtocolInterface.cs" />
     <Compile Include="Sensors\PositionSensorInterface.cs" />
     <Compile Include="Sensors\SpeedSensorInterface.cs" />
