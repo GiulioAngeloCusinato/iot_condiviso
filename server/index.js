@@ -51,3 +51,5 @@ client.publish(topic, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => 
     }
   })
 */
+
+// rabbitmq
