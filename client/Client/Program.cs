@@ -18,7 +18,11 @@ namespace Client
             // define protocol
             //ProtocolInterface protocol = new Http("http://localhost:8011/drone/123");
 
-            ProtocolInterface protocol = new Mqtt("test.mosquitto.org");
+            //ProtocolInterface protocol = new Mqtt("test.mosquitto.org");
+
+
+            ProtocolInterface protocol = new Amqp();
+
 
             while (true)
             {

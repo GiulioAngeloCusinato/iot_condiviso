@@ -18,8 +18,45 @@ app.use('/drone', routes);
 
 app.use(errorHandlers);
 
-module.exports = app;
+module.exports = app;   
 
+const amqp = require('amqplib/callback_api');
+
+try{
+    amqp.connect('amqps://grjftmgx:klgkFLrbazS3xiTNk6hYuqOJbXt5OViX@rat.rmq2.cloudamqp.com/grjftmgx', function(error0, connection) {
+      if (error0) {
+          throw error0;
+      }
+      connection.createChannel(function(error1, channel) {
+          if (error1) {
+              throw error1;
+          }
+
+          var queue = 'BrucoGianluco';
+
+          channel.assertQueue(queue, {
+              durable: false
+          });
+
+          console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
+
+          channel.consume(queue, function(msg) {
+
+              console.log(" [x] Received %s", msg.content.toString());
+              logModel.create(JSON.parse(msg.content.toString()));
+          }, {
+              noAck: true
+          });
+      });
+    })
+  }
+  catch{
+    console.log("Errore di connessione")
+  }
+
+
+
+/*
 const mqtt = require('mqtt')
 
 const host = 'test.mosquitto.org';
