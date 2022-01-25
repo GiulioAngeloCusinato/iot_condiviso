@@ -1,2 +1,2 @@
 # iot_condiviso
-Repository funzionante
+Codice funzionante di drone con coda in RabbitMQ
